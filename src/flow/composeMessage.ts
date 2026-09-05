@@ -22,7 +22,12 @@ function formatLikes(likes: readonly string[], shown: number): string {
   return extra > 0 ? `${visible}, +${extra} more` : visible
 }
 
-function buildMessage(text: Record<TextKey, string>, vibe: string, likes: readonly string[], likesShown: number): string {
+function buildMessage(
+  text: Record<TextKey, string>,
+  vibe: string,
+  likes: readonly string[],
+  likesShown: number,
+): string {
   return [
     `💃 GARBA APPLICATION ${APP_ID}`,
     "Status: ACCEPTED ✓",
