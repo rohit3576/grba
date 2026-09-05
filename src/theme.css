@@ -1,0 +1,10 @@
+@theme {
+  /* Garba Night 2026 — canonical design tokens (refined in Phase 3) */
+  --color-bg-deep: #2a0a1a; /* deep maroon — page background */
+  --color-bg-panel: #4a1230; /* panel maroon — cards */
+  --color-marigold: #f59e0b; /* marigold — primary actions */
+  --color-gold: #d4af37; /* gold — hairlines, accents */
+  --color-cream: #fdf6ec; /* cream — body text */
+  --color-rose: #e85d9e; /* festive rose — highlights */
+  --font-display: "Fraunces Variable", ui-serif, Georgia, serif;
+}
