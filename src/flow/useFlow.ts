@@ -8,6 +8,7 @@ interface FlowState {
   screen: ScreenId
   answers: Answers
   identityChoice: IdentityChoice
+  applicantPhoto: string | null
 }
 
 type FlowAction =
@@ -16,6 +17,7 @@ type FlowAction =
   | { type: "set-vibe"; value: VibeOption | null }
   | { type: "toggle-like"; option: LikeOption }
   | { type: "set-identity-choice"; value: IdentityChoice }
+  | { type: "set-photo"; value: string | null }
 
 const TRANSITIONS: Record<ScreenId, readonly ScreenId[]> = {
   lock: ["verifying"],
@@ -40,6 +42,7 @@ const initialState: FlowState = {
   screen: "lock",
   answers: EMPTY_ANSWERS,
   identityChoice: null,
+  applicantPhoto: null,
 }
 
 function reducer(state: FlowState, action: FlowAction): FlowState {
@@ -60,6 +63,8 @@ function reducer(state: FlowState, action: FlowAction): FlowState {
     }
     case "set-identity-choice":
       return { ...state, identityChoice: action.value }
+    case "set-photo":
+      return { ...state, applicantPhoto: action.value }
   }
 }
 
@@ -75,6 +80,9 @@ export function useFlow() {
   const setIdentityChoice = useCallback((value: IdentityChoice) => {
     dispatch({ type: "set-identity-choice", value })
   }, [])
+  const setPhoto = useCallback((value: string | null) => {
+    dispatch({ type: "set-photo", value })
+  }, [])
 
   return useMemo(
     () => ({
@@ -84,8 +92,9 @@ export function useFlow() {
       setVibe,
       toggleLike,
       setIdentityChoice,
+      setPhoto,
     }),
-    [state, select, setAnswer, setVibe, toggleLike, setIdentityChoice],
+    [state, select, setAnswer, setVibe, toggleLike, setIdentityChoice, setPhoto],
   )
 }
 

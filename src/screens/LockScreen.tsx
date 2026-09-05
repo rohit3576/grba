@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion"
 import { SCREEN_INVENTORY } from "../flow/screens"
 import type { FlowApi } from "../flow/useFlow"
+import { ApplicantPhoto } from "../living/ApplicantPhoto"
 import { GarboPot } from "../living/GarboPot"
 import { PrimaryButton } from "./Buttons"
 import { ScreenPanel, StaggerLines } from "./ScreenPanel"
@@ -36,6 +37,9 @@ export function LockScreen({ flow }: { flow: FlowApi }) {
       >
         ગરબે
       </span>
+      <motion.div {...enter(0.28)}>
+        <ApplicantPhoto flow={flow} />
+      </motion.div>
       <motion.h1
         {...enter(0.15)}
         className="font-display text-3xl leading-tight font-bold text-ink sm:text-4xl"
