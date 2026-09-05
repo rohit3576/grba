@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor / OS
+.DS_Store
+*.local
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Agent planning workspace (local only — not product code)
+.omo/
+
+# Vercel CLI local dir (created when you run `vercel`)
+.vercel/
+
+# Env (none planned — guard anyway)
+.env
+.env.*
+
+plan.md
