@@ -10,6 +10,7 @@ import {
   type VibeOption,
 } from "../flow/types"
 import type { FlowApi, TextAnswerKey } from "../flow/useFlow"
+import { BookBuddy } from "../living/BookBuddy"
 import { NoteBlob } from "../living/NoteBlob"
 import { PrimaryButton } from "./Buttons"
 import { ClayInput } from "./ClayInput"
@@ -103,6 +104,12 @@ export function QuestionScreen({ flow, id }: { flow: FlowApi; id: QuestionId }) 
   }, [hint])
 
   const hasMusicBuddy = id === "q3" || id === "q4"
+  const hasBookBuddy = id === "q5"
+  const buddy = hasMusicBuddy ? (
+    <NoteBlob excited={focused} size={96} />
+  ) : hasBookBuddy ? (
+    <BookBuddy size={96} />
+  ) : undefined
 
   const advance = () => {
     if (canContinue) {
@@ -118,10 +125,7 @@ export function QuestionScreen({ flow, id }: { flow: FlowApi; id: QuestionId }) 
   }
 
   return (
-    <ScreenPanel
-      spec={spec}
-      top={hasMusicBuddy ? <NoteBlob excited={focused} size={96} /> : undefined}
-    >
+    <ScreenPanel spec={spec} top={buddy}>
       {textConfig && (
         <ClayInput
           testId={`answer-${textConfig.key}`}

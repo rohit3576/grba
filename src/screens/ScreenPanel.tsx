@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"
+import { motion, useReducedMotion } from "framer-motion"
 import type { ReactNode } from "react"
 import type { ScreenSpec } from "../flow/screens"
 import { ProgressPill } from "./ProgressPill"
@@ -6,12 +6,15 @@ import { ProgressPill } from "./ProgressPill"
 export function ScreenPanel({
   spec,
   top,
+  staggerLines = false,
   children,
 }: {
   spec: ScreenSpec
   top?: ReactNode
+  staggerLines?: boolean
   children?: ReactNode
 }) {
+  const reduced = useReducedMotion()
   return (
     <motion.section
       data-testid={`screen-${spec.id}`}
@@ -28,13 +31,25 @@ export function ScreenPanel({
         </div>
       )}
       {top}
-      <h1 className="font-display text-3xl leading-tight font-bold text-ink sm:text-4xl">
-        {spec.title}
-      </h1>
-      {spec.lines?.map((line) => (
-        <p key={line} className="text-base leading-relaxed font-medium text-ink-soft">
+      {spec.title !== "" && (
+        <h1 className="font-display text-3xl leading-tight font-bold text-ink sm:text-4xl">
+          {spec.title}
+        </h1>
+      )}
+      {spec.lines?.map((line, index) => (
+        <motion.p
+          key={line}
+          initial={staggerLines && !reduced ? { opacity: 0, y: 10 } : false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={
+            staggerLines && !reduced
+              ? { delay: 0.3 + index * 0.15, type: "spring", stiffness: 260, damping: 20 }
+              : { duration: 0 }
+          }
+          className="text-base leading-relaxed font-medium text-ink-soft"
+        >
           {line}
-        </p>
+        </motion.p>
       ))}
       {spec.footer !== undefined && (
         <p className="text-xs font-semibold text-ink-soft/80">{spec.footer}</p>

@@ -33,6 +33,7 @@ export type LikeOption =
   | "Long drives"
   | "Movies"
   | "Music"
+  | "Reading"
   | "Travelling"
   | "Late-night conversations"
   | "Dancing"
@@ -45,6 +46,7 @@ export const LIKES_OPTIONS: readonly LikeOption[] = [
   "Long drives",
   "Movies",
   "Music",
+  "Reading",
   "Travelling",
   "Late-night conversations",
   "Dancing",
