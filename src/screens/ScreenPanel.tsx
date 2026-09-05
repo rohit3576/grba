@@ -1,8 +1,17 @@
 import { motion } from "framer-motion"
 import type { ReactNode } from "react"
 import type { ScreenSpec } from "../flow/screens"
+import { ProgressPill } from "./ProgressPill"
 
-export function ScreenPanel({ spec, children }: { spec: ScreenSpec; children?: ReactNode }) {
+export function ScreenPanel({
+  spec,
+  top,
+  children,
+}: {
+  spec: ScreenSpec
+  top?: ReactNode
+  children?: ReactNode
+}) {
   return (
     <motion.section
       data-testid={`screen-${spec.id}`}
@@ -12,16 +21,13 @@ export function ScreenPanel({ spec, children }: { spec: ScreenSpec; children?: R
       exit={{ opacity: 0, y: -8 }}
       transition={{ duration: 0.28 }}
     >
-      {spec.progress !== undefined && (
-        <div className="text-xs font-bold tracking-[0.14em] text-ink-soft uppercase">
-          {spec.progress}
-        </div>
-      )}
+      {spec.progress !== undefined && <ProgressPill progress={spec.progress} />}
       {spec.kicker !== undefined && (
         <div className="text-xs font-bold tracking-[0.14em] text-ink-soft uppercase">
           {spec.kicker}
         </div>
       )}
+      {top}
       <h1 className="font-display text-3xl leading-tight font-bold text-ink sm:text-4xl">
         {spec.title}
       </h1>

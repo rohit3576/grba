@@ -1,13 +1,14 @@
 import { motion } from "framer-motion"
 import { SCREEN_INVENTORY } from "../flow/screens"
 import type { FlowApi } from "../flow/useFlow"
+import { GarboPot } from "../living/GarboPot"
 import { AutoAdvance } from "./AutoAdvance"
 import { ScreenPanel } from "./ScreenPanel"
 
 export function VerifyingScreen({ flow }: { flow: FlowApi }) {
   const spec = SCREEN_INVENTORY.verifying
   return (
-    <ScreenPanel spec={spec}>
+    <ScreenPanel spec={spec} top={<GarboPot mood="plain" size={104} />}>
       <motion.div
         className="h-2.5 w-20 rounded-full bg-clay-marigold shadow-[0_4px_8px_rgba(180,100,20,0.35)]"
         animate={{ opacity: [0.3, 1, 0.3] }}
