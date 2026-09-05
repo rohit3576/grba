@@ -1,10 +1,13 @@
 @theme {
-  /* Garba Night 2026 — canonical design tokens (refined in Phase 3) */
-  --color-bg-deep: #2a0a1a; /* deep maroon — page background */
-  --color-bg-panel: #4a1230; /* panel maroon — cards */
-  --color-marigold: #f59e0b; /* marigold — primary actions */
-  --color-gold: #d4af37; /* gold — hairlines, accents */
-  --color-cream: #fdf6ec; /* cream — body text */
-  --color-rose: #e85d9e; /* festive rose — highlights */
-  --font-display: "Fraunces Variable", ui-serif, Georgia, serif;
+  --color-bg-cream: #fff4e6;
+  --color-clay-card: #fffdf8;
+  --color-clay-marigold: #ffb454;
+  --color-clay-pink: #f27eb4;
+  --color-clay-pista: #8fd6a0;
+  --color-clay-sky: #8cc5f0;
+  --color-clay-mango: #ffd97a;
+  --color-ink: #4a1230;
+  --color-ink-soft: #8a5a6e;
+  --font-display: "Baloo 2 Variable", "Baloo Bhai 2", system-ui, sans-serif;
+  --font-body: "Baloo 2 Variable", system-ui, sans-serif;
 }

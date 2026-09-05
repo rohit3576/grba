@@ -1,20 +1,16 @@
+import { AnimatePresence } from "framer-motion"
+import { useFlow } from "./flow/useFlow"
+import { SCREEN_COMPONENTS } from "./screens"
 import { AppShell } from "./shell/AppShell"
 
-/** Phase 1 placeholder — real lock screen lands with Todo 2 (flow engine). */
 export default function App() {
+  const flow = useFlow()
+  const Active = SCREEN_COMPONENTS[flow.screen]
   return (
     <AppShell>
-      <div className="flex flex-1 flex-col items-center justify-center text-center">
-        <p className="text-xs tracking-[0.35em] text-marigold uppercase">
-          🔒 Restricted
-        </p>
-        <h1 className="mt-4 font-display text-4xl text-cream">
-          GARBA NIGHT 2026
-        </h1>
-        <p className="mt-3 text-sm text-cream/60">
-          Verification Required — skeleton placeholder
-        </p>
-      </div>
+      <AnimatePresence mode="wait" initial={false}>
+        <Active key={flow.screen} flow={flow} />
+      </AnimatePresence>
     </AppShell>
   )
 }

@@ -3,8 +3,9 @@
 
 html,
 body {
-  background-color: var(--color-bg-deep);
-  color: var(--color-cream);
+  background-color: var(--color-bg-cream);
+  color: var(--color-ink);
+  font-family: var(--font-body);
 }
 
 body {
