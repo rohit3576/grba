@@ -43,11 +43,17 @@ export function CalculatingScreen({ flow }: { flow: FlowApi }) {
       </div>
       <div className="h-3 w-full max-w-64 overflow-hidden rounded-full bg-ink/10 shadow-[inset_2px_2px_5px_rgba(74,18,48,0.15)]">
         <motion.div
-          className="h-full rounded-full bg-clay-marigold shadow-[inset_0_2px_4px_rgba(255,255,255,0.6)]"
+          className="relative h-full overflow-hidden rounded-full bg-clay-marigold shadow-[inset_0_2px_4px_rgba(255,255,255,0.6)]"
           initial={{ width: "0%" }}
           animate={{ width: "100%" }}
           transition={{ duration: 3, ease: "linear" }}
-        />
+        >
+          <motion.div
+            className="absolute inset-y-0 w-1/4 rounded-full bg-white/40"
+            animate={reduced ? undefined : { x: ["-110%", "450%"] }}
+            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+          />
+        </motion.div>
       </div>
       <AutoAdvance ms={3000} onDone={() => flow.select("result")} />
     </ScreenPanel>

@@ -35,24 +35,32 @@ export function ResultScreen({ flow }: { flow: FlowApi }) {
     >
       <ClayCard>
         <motion.div
-          data-testid="result-ring"
-          className="mx-auto flex h-36 w-36 items-center justify-center rounded-full border-[10px] border-clay-marigold bg-bg-cream shadow-[0_10px_20px_rgba(180,100,20,0.25)]"
-          initial={reduced ? undefined : { scale: 0.5, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ type: "spring", stiffness: 260, damping: 16 }}
+          animate={reduced ? undefined : { scale: [1, 1.04, 1] }}
+          transition={{ delay: 2.2, duration: 0.4, ease: "easeInOut" }}
         >
-          {reduced ? (
-            <span data-testid="result-percent" className="font-display text-5xl font-bold text-ink">
-              94%
-            </span>
-          ) : (
-            <motion.span
-              data-testid="result-percent"
-              className="font-display text-5xl font-bold text-ink"
-            >
-              {display}
-            </motion.span>
-          )}
+          <motion.div
+            data-testid="result-ring"
+            className="mx-auto flex h-36 w-36 items-center justify-center rounded-full border-[10px] border-clay-marigold bg-bg-cream shadow-[0_10px_20px_rgba(180,100,20,0.25)]"
+            initial={reduced ? undefined : { scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ type: "spring", stiffness: 260, damping: 16 }}
+          >
+            {reduced ? (
+              <span
+                data-testid="result-percent"
+                className="font-display text-5xl font-bold text-ink"
+              >
+                94%
+              </span>
+            ) : (
+              <motion.span
+                data-testid="result-percent"
+                className="font-display text-5xl font-bold text-ink"
+              >
+                {display}
+              </motion.span>
+            )}
+          </motion.div>
         </motion.div>
         <StaggerLines lines={spec.lines ?? []} />
       </ClayCard>
