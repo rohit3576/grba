@@ -1,3 +1,8 @@
+if (import.meta.env.DEV) {
+  import("react-grab");
+  import("react-scan").then(({ scan }) => scan({ enabled: true }));
+}
+
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import '@fontsource-variable/baloo-2'

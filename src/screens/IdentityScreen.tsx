@@ -25,10 +25,12 @@ export function IdentityScreen({ flow }: { flow: FlowApi }) {
   return (
     <ScreenPanel spec={spec}>
       <div className="relative flex w-full max-w-72 gap-3">
-        <button
+        <motion.button
           type="button"
           aria-pressed={chosen === "yes"}
           data-testid="option-yes"
+          whileTap={{ scale: 0.96, y: 2 }}
+          transition={{ type: "spring", stiffness: 400, damping: 15 }}
           onClick={() => flow.setIdentityChoice("yes")}
           className={`min-h-13 flex-1 rounded-[18px] px-6 py-3 text-lg font-bold tracking-[0.2em] transition-all duration-100 active:translate-y-0.5 ${
             chosen === "yes"
@@ -37,7 +39,7 @@ export function IdentityScreen({ flow }: { flow: FlowApi }) {
           }`}
         >
           YES
-        </button>
+        </motion.button>
         <motion.button
           type="button"
           aria-pressed={chosen === "no"}

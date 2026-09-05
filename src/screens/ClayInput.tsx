@@ -32,7 +32,7 @@ export function ClayInput({
       }}
       onFocus={() => onFocusChange?.(true)}
       onBlur={() => onFocusChange?.(false)}
-      className="min-h-14 w-full rounded-[16px] bg-bg-cream px-5 text-base font-medium text-ink placeholder:text-ink-soft/60 shadow-[inset_4px_4px_10px_rgba(74,18,48,0.12),inset_-4px_-3px_8px_rgba(255,255,255,0.9)] outline-none focus-visible:outline-[3px] focus-visible:outline-ink/40 focus-visible:shadow-[inset_2px_2px_6px_rgba(74,18,48,0.08),inset_-2px_-2px_6px_rgba(255,255,255,1)]"
+      className="min-h-14 w-full rounded-[16px] bg-bg-cream px-5 text-base font-medium text-ink placeholder:text-ink-soft/60 shadow-[inset_4px_4px_10px_rgba(74,18,48,0.12),inset_-4px_-3px_8px_rgba(255,255,255,0.9)] focus-visible:shadow-[inset_2px_2px_6px_rgba(74,18,48,0.08),inset_-2px_-2px_6px_rgba(255,255,255,1)]"
     />
   )
 }

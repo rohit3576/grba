@@ -27,6 +27,8 @@ lerna-debug.log*
 
 # Agent planning workspace (local only — not product code)
 .omo/
+.agents/
+.claude/
 
 # Vercel CLI local dir (created when you run `vercel`)
 .vercel/

@@ -21,6 +21,7 @@ const PIECES: readonly PieceSpec[] = [
   { kind: "diya", depth: 1, top: "28%", left: "5%", size: 18, duration: 19 },
   { kind: "dot", color: "bg-clay-mango", depth: 0.3, top: "56%", left: "76%", size: 12, duration: 16 },
   { kind: "dot", color: "bg-clay-sky", depth: 0.6, top: "86%", left: "58%", size: 10, duration: 21 },
+  { kind: "petal", color: "bg-clay-pink", depth: 0.45, top: "45%", left: "4%", size: 14, duration: 17 },
 ]
 
 const RANGE = 22
@@ -55,7 +56,7 @@ function Piece({ spec, index }: { spec: PieceSpec; index: number }) {
         {spec.kind === "diya" && (
           <span className="block" style={{ width: spec.size, height: spec.size * 0.9 }}>
             <span className="block h-[55%] w-full rounded-b-full bg-clay-pista shadow-[inset_0_2px_3px_rgba(255,255,255,0.6),inset_0_-2px_3px_rgba(74,18,48,0.18)]" />
-            <span className="mx-auto -mt-[18%] block h-[38%] w-[34%] rounded-full bg-clay-mango shadow-[0_0_6px_rgba(255,217,122,0.9)]" />
+            <span className="mx-auto -mt-[18%] block h-[38%] w-[34%] rounded-full bg-clay-mango shadow-[0_0_4px_rgba(255,217,122,0.8)]" />
           </span>
         )}
         {spec.kind === "dot" && (

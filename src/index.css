@@ -13,3 +13,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+[role="button"]:focus-visible {
+  outline-width: 3px;
+  outline-style: solid;
+  outline-color: var(--color-ink);
+  outline-offset: 2px;
+}

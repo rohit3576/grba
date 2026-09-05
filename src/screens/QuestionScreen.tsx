@@ -13,6 +13,7 @@ import type { FlowApi, TextAnswerKey } from "../flow/useFlow"
 import { BookBuddy } from "../living/BookBuddy"
 import { NoteBlob } from "../living/NoteBlob"
 import { PrimaryButton } from "./Buttons"
+import { ClayCard } from "./ClayCard"
 import { ClayInput } from "./ClayInput"
 import { ScreenPanel } from "./ScreenPanel"
 
@@ -126,66 +127,68 @@ export function QuestionScreen({ flow, id }: { flow: FlowApi; id: QuestionId }) 
 
   return (
     <ScreenPanel spec={spec} top={buddy}>
-      {textConfig && (
-        <ClayInput
-          testId={`answer-${textConfig.key}`}
-          value={textValue}
-          placeholder={textConfig.placeholder}
-          ariaLabel={spec.title}
-          onChange={handleChange}
-          onEnter={advance}
-          onFocusChange={setFocused}
-        />
-      )}
-      {isArtist && (
-        <div className="flex flex-col items-center gap-2">
-          <p className="text-xs font-bold tracking-[0.14em] text-ink-soft uppercase">
-            Pick your vibe — optional
-          </p>
+      <ClayCard>
+        {textConfig && (
+          <ClayInput
+            testId={`answer-${textConfig.key}`}
+            value={textValue}
+            placeholder={textConfig.placeholder}
+            ariaLabel={spec.title}
+            onChange={handleChange}
+            onEnter={advance}
+            onFocusChange={setFocused}
+          />
+        )}
+        {isArtist && (
+          <div className="flex flex-col items-center gap-2">
+            <p className="text-xs font-bold tracking-[0.14em] text-ink-soft uppercase">
+              Pick your vibe — optional
+            </p>
+            <div className="flex flex-wrap justify-center gap-2">
+              {VIBE_OPTIONS.map((option: VibeOption, index: number) => (
+                <ClayChip
+                  key={option}
+                  label={option}
+                  index={index}
+                  selected={flow.answers.vibe === option}
+                  onToggle={() => flow.setVibe(flow.answers.vibe === option ? null : option)}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+        {isLikes && (
           <div className="flex flex-wrap justify-center gap-2">
-            {VIBE_OPTIONS.map((option: VibeOption, index: number) => (
+            {LIKES_OPTIONS.map((option: LikeOption, index: number) => (
               <ClayChip
                 key={option}
                 label={option}
                 index={index}
-                selected={flow.answers.vibe === option}
-                onToggle={() => flow.setVibe(flow.answers.vibe === option ? null : option)}
+                selected={flow.answers.likes.includes(option)}
+                onToggle={() => flow.toggleLike(option)}
               />
             ))}
           </div>
-        </div>
-      )}
-      {isLikes && (
-        <div className="flex flex-wrap justify-center gap-2">
-          {LIKES_OPTIONS.map((option: LikeOption, index: number) => (
-            <ClayChip
-              key={option}
-              label={option}
-              index={index}
-              selected={flow.answers.likes.includes(option)}
-              onToggle={() => flow.toggleLike(option)}
-            />
-          ))}
-        </div>
-      )}
-      <PrimaryButton
-        aria-disabled={!canContinue}
-        onClick={advance}
-        className={canContinue ? "" : "opacity-45 shadow-none"}
-      >
-        {spec.primaryLabel}
-      </PrimaryButton>
-      {hint !== null && (
-        <motion.p
-          data-testid="input-hint"
-          initial={{ opacity: 0, y: 4 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.2 }}
-          className="text-sm font-semibold text-clay-pink"
+        )}
+        <PrimaryButton
+          aria-disabled={!canContinue}
+          onClick={advance}
+          className={canContinue ? "" : "opacity-45 shadow-none"}
         >
-          {hint}
-        </motion.p>
-      )}
+          {spec.primaryLabel}
+        </PrimaryButton>
+        {hint !== null && (
+          <motion.p
+            data-testid="input-hint"
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2 }}
+            className="text-sm font-semibold text-clay-pink"
+          >
+            {hint}
+          </motion.p>
+        )}
+      </ClayCard>
     </ScreenPanel>
   )
 }
